@@ -72,18 +72,38 @@
                 </div>
                 
                 <!-- 5. Phần nhạc -->
-                <!-- <audio id="player" autoplay loop>
+                <!--<audio id="player" autoplay loop>
                     <source src="./music.mp3" type="audio/mp3">
                 </audio>  -->
-                <audio id="player" autoplay loop>
-                    <source src="../MyBirthday/music.mp3" >
+                 <audio id="player" autoplay loop>
+                    <source src="./music.mp3" type="audio/mp3">
                 </audio>
+                <script>
+                    var audio = document.getElementById('player');
+                    // Chờ cho đến khi trang web được tải xong
+                    window.addEventListener('load', function() {
+                        var mp3File = './music.mp3';
+
+                        // Gán đường dẫn tệp nhạc cho phần tử audio
+                        audio.src = mp3File;
+            
+                        // Kiểm tra xem phần tử audio đã tồn tại và có thể phát được không
+                        var fakeInteraction = function() {
+                            audio.play();
+                            // Loại bỏ sự kiện tương tác giả lập sau khi sử dụng
+                            document.removeEventListener('click', fakeInteraction);
+                        };
+                
+                        // Thêm sự kiện click cho toàn bộ trang web
+                        document.addEventListener('click', fakeInteraction);
+                   });
+                   
+               </script>
+               
             </div>
         </div>
         <script>
-            if (document.location.search.match(/type=embed/gi)) {
-                window.parent.postMessage("resize", "*");
-            }
+           
             function showMessage() {
                 // 6. Lời nhắn hiện ra khi bấm vào tên hoặc avatar
                 swal({
